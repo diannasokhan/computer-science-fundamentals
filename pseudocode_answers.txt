@@ -1,0 +1,56 @@
+Short Answer
+
+1. Why do programmers use pseudocode?
+	
+	A:Programmers use pseudocode to help develop algorithms and to focus on the logic
+	rather than the details of language syntax. Using pseudocode, you break the code
+	into parts and describe each step, creating an outline.
+
+2. If you run pseudocode on your computer what would happen?
+	
+	A: Nothing, pseudocode isn't a code meant for comouters, but for humans to read.
+
+Programming Assignment
+
+1. Create a function that takes two numbers and prints out the greater number.
+	
+	INPUT two numbers
+	IF the first number is greater than the second number THEN
+		PRINT first number
+	ELSE 
+		PRINT second number
+	END IF
+
+2. Create a function that prints out the numbers from 1 to 100
+
+	SET number to 1
+	WHILE number is less than or equal to 100
+		PRINT number + 1
+	END WHILE
+
+3. Create a function that searches for a specific entry in a phonebook
+
+	INPUT first name, last name and phonebook 
+	IF the first and last name is the same as the contact in the phonebook
+		PRINT contact information
+	END IF
+
+4. Using the Pseudocode you wrote for the previous question, implement 
+it in any computer language of your choice.
+
+	function findEntry(firstName, lastName, phoneBook){
+  		for(let i = 0; i < phoneBook.length; i++){
+    		if(firstName === phoneBook[i].firstName && lastName === phoneBook[i].lastName){
+     	return phoneBook[i].number
+    	}
+    	else return 'contact not found'
+  	}
+	}
+
+	
+
+
+	
+	
+			
+
