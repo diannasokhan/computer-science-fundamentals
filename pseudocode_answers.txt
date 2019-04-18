@@ -39,19 +39,20 @@ Programming Assignment
 it in any computer language of your choice.
 
 function findEntry(firstName, lastName, phoneBook){
-  for(let i = 0; i < phoneBook.length; i++){
-    if(firstName === phoneBook[i].firstName && lastName === phoneBook[i].lastName){
+     for(let i = 0; i < phoneBook.length; i++){
+      if(firstName === phoneBook[i].firstName && lastName === phoneBook[i].lastName){
       return `${phoneBook[i].firstName} ${phoneBook[i].lastName}`;
     }
-    else return 'contact not found';
+  }
+     for(let i = 0; i < phoneBook.length; i++){
+      if(firstName !== phoneBook[i].firstName || lastName !== phoneBook[i].lastName){
+      return 'contact not found';
+    }
   }
 }
 
-var phoneBook = [
-  {firstName:"Kelly", lastName:"Smith"},
-  {firstName:"John", lastName:"Smith"}
-]
-console.log(findEntry("Kelly", "Smith", phoneBook))
+console.log(findEntry("Kelly", "Smith", [{firstName:"John", lastName:"Smith"}, {firstName:"Kelly", lastName:"Smith"}]))
+
 
 	
 
