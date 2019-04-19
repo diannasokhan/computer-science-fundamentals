@@ -1,0 +1,64 @@
+Exercises
+
+1. A line of people at an amusement ride.
+-The line is composed of members, represented as strings.
+-There is a front to the line, as well as a back.
+-When someone enters the line, place them at the end.
+-People may leave the line whenever they see fit, and those behind them take their place.
+
+Given the above real-world information, use an array data structure to code the following 
+solution.
+
+a) Use an array input: ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+b) Insert a new person, "Mary" at the end of the line. In other words, you should insert 
+Mary after Mike.
+	
+	A:function newPerson(person, array){
+ 	    let newArray = array.push(person);
+ 	      return array;
+	  }
+
+c) Find a person in line named "Josh." This function should return the position of 2 in the 
+array, (recall that arrays are 0-based).
+
+	A:function findPerson(person, array){
+ 	    return array.indexOf(person)
+	  }
+
+d) Find a person in line named "Emily." What should your function return if it does not find 
+the item in the array?
+
+	A:function findPerson(person, array){
+ 	    return array.indexOf(person) > 0 ? array.indexOf(person) : 'Person not found';
+	  }
+
+e) What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you 
+code this so Melissa appears before Ava
+
+	A:function cutLine(person, friend, array){
+ 	    let currentPosition = array.indexOf(person);
+ 	    let addFriend = array.splice(currentPosition, 0, friend);
+ 	      return array;
+	  }
+
+f) If Patrick wants to leave the line, how would you delete him from the array?
+
+	A:function leaveLine(person, array){
+ 	    let currentPosition = array.indexOf(person);
+ 	    let personLeaving = array.splice(currentPosition, 1);
+  	      return array;
+	  }
+
+2. Provide another real-world example that you can model using a data structure.
+
+	A: Another real-world example would be bookshelves at a library.
+	-The collection will be composed of books, represented as strings.
+	-There will be sections for different genres.
+	-Everything will be organized alphabetically.
+	-When adding a book, you will place it on the shelf in its genre and alphabetically.
+	-When checking out a book, the book before it will replace its spot.
+
+3. How would your data structure allow developers to access and manipulate the data?
+
+	A: After initally sorting out the books, it will be easy to remove books and
+	also add books to the shelves.
