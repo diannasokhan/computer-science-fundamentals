@@ -44,11 +44,7 @@ function findEntry(firstName, lastName, phoneBook){
       return `${phoneBook[i].firstName} ${phoneBook[i].lastName}`;
     }
   }
-     for(let i = 0; i < phoneBook.length; i++){
-      if(firstName !== phoneBook[i].firstName || lastName !== phoneBook[i].lastName){
-      return 'contact not found';
-    }
-  }
+    return 'Contact not found'
 }
 
 console.log(findEntry("Kelly", "Smith", [{firstName:"John", lastName:"Smith"}, {firstName:"Kelly", lastName:"Smith"}]))
