@@ -1,0 +1,63 @@
+Exercises
+
+1. What is the main difference between a stack and a queue?
+
+	A: Stack structures data in a last in first out priority, while queue
+	structures data in a first in first out priority.
+
+2. What are the similarities bewtween stacks and queues?
+
+	A: In both stack and queues, you aren't allowed to pick an element from 
+	the middle of the list and they are both linear data structure. 
+
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO options 
+in a word processor such as Microsoft Word. Which data structure would you use for 
+each option and why?
+
+	A: Stack because you will be working with the last thing you wrote.
+	This fits into the LIFO order.
+
+Programming Questions
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be 
+converted to "!colB".
+	
+	A:
+	function reverseString(string) {
+  	  let stack = [];
+  	  for (let i = 0; i < string.length; i++)
+    	    stack.push(string[i]);
+  
+  	  let reversed = '';
+  	  for (let i = stack.length-1; i >= 0; i--)
+    	    reversed += stack[i] ;
+  	  return reversed;
+	}
+2. Implement the pop method of a stack using one queue. Make a FIFO data structure mirror 
+the functionality of a LIFO data structure. Since the internal list is not the same as 
+defined in the checkpoint, it may help to rewrite the pseudocode first.
+
+	A:
+	function pop(queue){
+   	  let list = [];
+   	  for (let i = 0; i< queue.length; i++){
+     	    list.push(queue[i]);
+   	  }
+   	  let deleted = list.pop();
+   	  return deleted;
+ 	}
+
+3. Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+
+	A:
+	var coffeeLine = ["Abby", "Dianna"];
+	function joinLine(person){
+  	  coffeeLine.push(person);
+  	  return coffeeLine;
+	}
+	function checkedOut(){
+  	  coffeeLine.shift();
+  	  return coffeeLine;
+	}
+
+	
