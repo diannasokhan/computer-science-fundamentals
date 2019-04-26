@@ -40,24 +40,27 @@ defined in the checkpoint, it may help to rewrite the pseudocode first.
 	A:
 	function pop(queue){
    	  let list = [];
+      let deleted;
    	  for (let i = 0; i< queue.length; i++){
-     	    list.push(queue[i]);
+        if(i < queue.length -1 && i >= 0){ 
+           list.push(queue[i]);
+           }
+        else deleted = queue[i];
    	  }
-   	  let deleted = list.pop();
-   	  return deleted;
- 	}
+        return deleted;
+  	}
 
 3. Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
 
 	A:
-	var coffeeLine = ["Abby", "Dianna"];
-	function joinLine(person){
-  	  coffeeLine.push(person);
-  	  return coffeeLine;
+	
+	function joinLine(line, person){
+  	  line.push(person);
+  	  return line;
 	}
-	function checkedOut(){
-  	  coffeeLine.shift();
-  	  return coffeeLine;
+	function checkedOut(line){
+  	  line.shift();
+  	  return line;
 	}
 
 	
