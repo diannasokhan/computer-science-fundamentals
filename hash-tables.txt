@@ -1,0 +1,182 @@
+Exercises
+1. What is a hash table?
+
+	A: A type of data structure that stores values by linking it to a key.
+
+2. What is hashing?
+
+	A: The conversion of a key to a numerical index.
+
+3. How does a hash table store data?
+
+	A: The key of the element is converted into a hash code using a hashing function.
+	After you find the true index by modding the output of the hashing function, you get
+	the array index. Lastly, the value of the element will then be stored in the array index.
+
+4. How are hash tables and objects different?
+
+	A: Hash tables are used as a collection of similar data, while objects can hold different
+	types of data put together.
+
+5. Determine whether you would use a hash table or an object to store each of the following
+pieces of data:
+	A: A list of pets and their unique names. 
+		-Hash table
+	The name, age, and the birthday of your best friend.
+		-Object
+	The name and location of every company in a given city.
+		-Hash table
+	All of the books checked out from a library by a particular individual.
+		-Hash table
+	The primary and secondary phone numbers for a contact.
+		-Object
+
+Programming Questions
+1. Create a hash table that allows a sales associate to enter a customer's name, address, and phone number 
+into the system and look up customers using their phone numbers.
+
+A:
+var hash = function(integer, max){
+  let hash = integer
+    .toString()
+    .split('')
+    .reduce((sum, total) => sum + total)
+  return hash % max
+   
+}
+class HashTable {
+  constructor(){
+    this.list = [];
+    this.storageLimit = 10;
+    
+  }
+ addContact(key, value){
+   let index = hash(key, this.storageLimit);
+   if(this.list[index] === undefined){
+     this.list[index] = [[key, value]];
+   }
+   else {
+     this.list[index].push([key, value]);
+   }
+  }
+  findContact(key){
+    let index = hash(key, this.storageLimit);
+    if(this.list[index] === undefined){
+      return undefined;
+    }
+    else{
+      for(let i = 0; i < this.list[index].length; i++){
+        if(this.list[index][i][0] === key){
+          return this.list[index][i][1];
+        }
+      }
+    }
+  }
+}
+let contacts = new HashTable();
+contacts.addContact(2673333333, ['Dianna', '822 Kelly Dr' ]);
+contacts.addContact(2678256578, ['Bill', '822 Sandley St' ]);
+contacts.addContact(2156784545, ['Kelly', '1215 Large St' ]);
+console.log(contacts)
+console.log(contacts.findContact(2673333333))
+
+2. Create a hash table that allows a store owner to track their store's inventory and quantity.
+
+A:
+function hash(string, max){
+  let hash = 0;
+  for(let i =0; i < string.length; i++){
+    hash =+ string.charCodeAt(i);
+  }
+  return hash % max;
+}
+
+class HashTable {
+  constructor(){
+    this.list = [];
+    this.storageLimit = 10;
+  }
+  addInventory(key, value){
+    let index = hash(key, this.storageLimit);
+    if(this.list[index] === undefined){
+      this.list[index] = [
+        [key, value]
+      ]
+    }
+    else {
+      this.list[index].push([key, value])
+    }
+  }
+  findInventory(key){
+    let index = hash(key, this.storageLimit);
+    if(this.list[index] === undefined){
+      return undefined;
+    }
+    else{
+      for(let i = 0; i < this.list[index].length; i++){
+        if(this.list[index][i][0] === key){
+          return this.list[index][i][1];
+        }
+      }
+    }
+  }
+}
+
+let tools = new HashTable();
+tools.addInventory('Hammer', 200);
+tools.addInventory('Screwdriver', 100);
+tools.addInventory('Drill', 10);
+console.log(tools);
+console.log(tools.findInventory('Hammer'));
+
+3. Create a hash table that allows digital copies of newspapers to be entered and searched by publisher 
+and publication date.
+
+A:
+function hash(string, max){
+  let hash = 0;
+  for(let i = 0; i < string.length; i++){
+    hash += string.charCodeAt(i);
+  }
+  return hash % max;
+}
+class HashTable{
+  constructor(){
+    this.list=[];
+    this.storageLimit=10;
+  }
+  addEntry(publisher, pubDate, entry){
+    let key = publisher + pubDate;
+    let index = hash(key, this.storageLimit);
+    if(this.list[index] === undefined){
+      this.list[index] = [
+        [publisher, pubDate, entry]
+      ];
+    }
+    else{
+      this.list[index].push([publisher, pubDate, entry])
+    }
+  }
+  findEntry(publisher, pubDate){
+    let key = publisher + pubDate;
+    let index = hash(key, this.storageLimit);
+    if(this.list[index]=== undefined){
+      return undefined;
+    }
+    else {
+      for(let i = 0; i < this.list[index].length; i++){
+        if(this.list[index][i][0] === publisher && this.list[index][i][1] === pubDate){
+          return this.list[index][i][2];
+        }
+      }
+    }
+  }
+}
+
+let article = new HashTable();
+article.addEntry('D. Barrons', 'March 12, 2019', 'The Big Bang');
+article.addEntry('Chris Jenkins', 'May 1, 2019', 'Bonnet');
+article.addEntry('Mylo Suzy', 'December 27, 2011', 'Crazy Dog');
+console.log(article)
+console.log(article.findEntry('D. Barrons', 'March 12, 2019'))
+  
