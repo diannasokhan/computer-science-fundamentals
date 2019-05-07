@@ -1,0 +1,161 @@
+Exercises
+
+1. What is a binary tree and what makes it unique to other tree?
+
+	A: Binary trees are data structures that have Nodes with a left and right pointer along
+	with the data element. It is sorted by having values greater than the root value placed to the right 
+	and values that's lesser than the root placed to the left. 
+
+2. What is heuristic?
+
+	A: The sacrifice of accuracy in order to solve a problem quicker.
+
+3. What is another problem besides the shortest-path problem that requires the use of heuristics?
+
+	A: Antivirus software searching for viruses in a computer.
+
+4. What is the difference between a depth-first search and a breadth-first search?
+
+	A:  Depth-first searches the entire length of a node first and if the node isn't there it moves back up 
+	and starts searching another branch. Breadth-first searches the tree's rows for the desired node, row by row.
+
+5. Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+
+	A: A graph with no direction that won't form any loops and wont have any cost associated between the travels
+	between two nodes.
+
+6. What kind of graph is a binary search tree?
+	
+	A: Directed, A-cyclic, Unweighted
+
+Programming Questions
+
+1.Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
+
+A:
+class Node{
+  constructor(value){
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+function BinaryTreeSearch(){
+  this.root = null;
+}
+BinaryTreeSearch.prototype.push = function(value){
+  let newNode = new Node(value);
+  
+   if(!this.root){
+     this.root = newNode;
+   }
+   else {
+    let current = this.root;
+    while(current !== null){
+      if(current.value > newNode.value){
+        if(current.left === null){
+          current.left = newNode;
+          break;
+        }
+        current = current.left;
+      }
+      else if(current.value < newNode.value){
+        if(current.right === null){
+          current.right = newNode;
+          break;
+        }
+        current = current.right;
+      }
+      else break;
+    }
+  }
+  return this;
+ }
+
+BinaryTreeSearch.prototype.find = function(value){
+  let current = this.root;
+  while(current){
+    if(current.value == value){
+      return 'The value of ' + value + ' exists';
+    }
+    if(current.value > value){
+      current = current.left;
+    }
+    if(current.value < value){
+      current = current.right;
+    }
+  }
+  return 'The value of ' + value + ' does not exist';
+}
+
+
+let BTS = new BinaryTreeSearch();
+BTS.push(8)
+BTS.push(3)
+BTS.push(10)
+BTS.push(1)
+BTS.push(6)
+BTS.push(4)
+BTS.push(7)
+BTS.push(14)
+BTS.push(13)
+console.log(BTS.find(10))
+console.log(BTS.find(23))
+
+2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+
+Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance 
+between the nodes 1 and 14 is 4.
+
+BinaryTreeSearch.prototype.LCA = function (currentNode, n1, n2){
+  if(currentNode == null){
+    return null;
+  }
+  if(currentNode.value == n1 || currentNode.value == n2 ){
+    return currentNode;
+  }
+   let leftLCA = this.LCA(currentNode.left, n1, n2);
+   let rightLCA = this.LCA(currentNode.right, n1, n2);
+  if(leftLCA && rightLCA){
+    return currentNode;
+  }
+  else return(leftLCA != null) ? leftLCA : rightLCA
+  
+}
+
+BinaryTreeSearch.prototype.LevelOfNode = function(currentNode, node, level) {
+  if(!currentNode){
+    return -1;
+  }
+  if(currentNode.value === node){
+    return level;
+  }
+  let l = this.LevelOfNode(currentNode.left, node, level +1);
+  if(l !== -1){
+    return l;
+  }
+  return this.LevelOfNode(currentNode.right, node, level +1)
+}
+
+BinaryTreeSearch.prototype.DistanceBetweenNodes = function(root, n1, n2){
+  let lca = this.LCA(root, n1, n2);
+  let d1 = this.LevelOfNode(lca, n1, 0);
+  let d2 = this.LevelOfNode(lca, n2, 0);
+  return d1 + d2;
+}
+
+let BTS = new BinaryTreeSearch();
+BTS.push(8)
+BTS.push(3)
+BTS.push(10)
+BTS.push(1)
+BTS.push(6)
+BTS.push(4)
+BTS.push(7)
+BTS.push(14)
+BTS.push(13)
+console.log(BTS.DistanceBetweenNodes(BTS.root, 4, 14))
+
+
+
