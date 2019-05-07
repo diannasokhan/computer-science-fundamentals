@@ -1,0 +1,102 @@
+Exercises
+
+1. What are some pros and cons of using linked lists instead of arrays?
+
+	A: A con would be that you have to go through a list in order to get to the desired element. 
+	A pro to linked lists would be that you use any available memory location to store it
+	because each node is independent in memory. Also, because we dynamically instantiate every node
+	in a linked list, the lists never contain empty placeholders.
+
+2. Come up with a real world example of a linked list.
+
+	A: Completing missions in video games. In order to get your next mission you have to finish 
+	the one before it.
+
+1. The linked list push function should take a value, create a node, and add it to the end of a list. 
+Below is pseudocode for a push function for a singly linked list. However, there is something wrong with it. 
+Submit both an explanation of the bug and a functional implementation of the method.
+
+A: You need a while loop in order to move from one node to another on the list.
+
+class LinkedList{
+  constructor(){
+  this.head = null;
+ }
+}
+LinkedList.prototype.push = function(value){
+  let node ={
+    value: value,
+    next: null
+  }
+  if(!this.head){
+    this.head = node;
+    return this.head;
+  }
+  else{
+    let current = this.head;
+    while(current.next){
+      current = current.next;
+    }
+    current.next = node;
+    return current.next;
+  }
+  
+}
+
+2. Given an unsorted singly linked list, remove all duplicates from the linked list.
+Example
+Input: a -> c -> d -> d -> a
+Output: a -> c -> d
+
+LinkedList.prototype.duplicate = function(n){
+  while(n !== null){
+    let current = n;
+    while(current.next !== null){
+      if(current.next.value == n.value){
+        current.next = current.next.next;
+      }
+      else{
+        current = current.next;
+      }
+    }
+    n = n.next;
+  }
+}
+
+
+let list = new LinkedList();
+list.push('a');
+list.push('c');
+list.push('d');
+list.push('d');
+list.push('d');
+list.push('a')
+list.duplicate(list.head)
+console.log(list.head.next.next)
+
+3. Given an unsorted singly linked list, reverse it.
+Example
+Input: a -> b -> c -> d
+Output: d -> c -> b -> a
+
+LinkedList.prototype.reverse = function(head){
+  let prev = null;
+  let current = head;
+  let next = null;
+  while(current !== null){
+    next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  return prev;
+}
+
+
+let list = new LinkedList();
+list.push('a');
+list.push('b');
+list.push('c');
+list.push('d');
+console.log(list.reverse(list.head))
+
