@@ -1,0 +1,50 @@
+Exercises
+
+1. Using proper pseudo-code, describe the following primitive algorithms:
+
+-Making coffee
+  Get mug from cabinet.
+  Get coffee ground bag from cabinet
+  Place two tablespoons of coffee into a coffee filter
+  Put the filter in the coffee machine
+  Turn on coffee machine
+  Press brew
+    Wait
+  Pour coffee into mug
+
+-Washing dishes
+  Wet sponge
+  Put dish soap onto sponge
+  Lather sponge
+  Scrub dirty plates
+  Rinse
+  Place clean plates on dish rack
+ 
+-Brushing teeth
+  Rinse toothbrush
+  Put toothpaste onto toothbrush
+  Brush teeth
+  Brush tongue
+  Clean toothbrush
+  Put toothbrush away
+  Rinse mouth
+
+2. As with the knot algorithm, there may be more than one way to solve the problem. 
+It is essential to try to pick the best algorithm for a situation. Name three companies 
+who created an algorithm that made them successful, e.g., Google's search algorithm. It 
+doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's 
+algorithm produces more relevant results than other search engines; what about each of your 
+cases make them stand out?
+
+-Waze's map app: Waze accurately tells you how long it will take to get to your destination, while
+also letting you know when you are driving too fast and if there are police around.
+
+-Apple's Siri: You are able to activate Siri with your voice and she can do almost anything from calling
+somebody to searching up information on the web.
+
+-LinkedIn Website: Allows you to find jobs and connect with actual people that work in the company.
+
+3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+The instructions should be a sequence of logical steps that accomplish a goal and finish in a finite amount of time.
+
