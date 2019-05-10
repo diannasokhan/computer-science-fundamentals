@@ -55,6 +55,14 @@ FUNCTION fibonacci(number)
  IF number < 1 THEN
    ERROR
  ELSE IF number = 1 or 2 THEN
+   RETURN 1
+ ELSE
+   CALL fibonacci WITH number - 2 RETURNING twoBack
+   CALL fibonacci WITH number - 1 RETURNING oneBack
+   RETURN twoBack + oneBack
+ END IF
+END FUNCTION
+	A: O(2 n)
 
 9. Out of the code snippets you just saw, which is the most time efficient?
 
